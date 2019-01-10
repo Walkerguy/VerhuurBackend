@@ -1,18 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const logger = require('morgan');
 const app = express();
-const routes = require('./routes/routes')
-var cors = require("cors");
-var logger = require('morgan');
-
-mongoose.Promise = global.Promise;
+const routes = require('./routes/routes');
+var mongodb         = require('./config/mongo.db');
 
 app.use(cors());
-
-if(process.env.NODE_ENV !== 'test'){
-  mongoose.connect('mongodb://testuser:Welkom1@ds035026.mlab.com:35026/loans');
-}
 
 app.use(bodyParser.json());
 routes(app);
