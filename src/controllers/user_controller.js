@@ -1,4 +1,7 @@
-const User = require('../model/user.model')
+const User = require('../model/user.model');
+var passport = require('passport');
+var jwt = require('jsonwebtoken');
+var config = require('../config/environment');
 
 module.exports = {
 
@@ -6,12 +9,65 @@ module.exports = {
     res.send({hi:'there'})
   },
 
-  create(req,res,next){
-    const userProps = req.body;
-    User.create(userProps)
-    .then(user => res.send(user))
-    .catch(next);
-  },
+  //Register
+  register(req, res, next){
+    let newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password,
+        admin: req.body.admin
+
+    });
+
+    User.createUser(newUser, (err, user)=> {
+        if(err){
+            res.json({success: false, msg:'Failed to register user'});
+
+        }else {
+            res.json({success: true, msg:'User registered'});
+        }
+    });
+},
+
+//Authenticate
+authenticate(req, res, next){
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.getUserByUsername(username, (err, user) => {
+      if(err) throw err;
+      if(!user){
+          return res.json({success: false, msg:"User not found"});
+
+      }
+
+      User.comparePassword(password, user.password, (err, isMatch) =>{
+          if(err) throw err;
+          if(isMatch){
+              const token = jwt.sign(user.toJSON(), config.secret, {
+                  expiresIn: 604800
+
+              });
+              res.json({
+                  success: true,
+                  token: 'Bearer ' + token,
+                  user: {
+                      id: user._id,
+                      username: user.username,
+                      email: user.email,
+                      admin: user.admin
+                      
+                  }
+              });
+          } else {
+              return res.json({success: false, msg: "Wrong Password bruv"});
+          }
+      });
+  });
+},
+
+
 
   edit(req,res,next){
     const userId = req.params.id;
@@ -63,7 +119,7 @@ module.exports = {
     .then((user) => res.status(200).send(user))
     .catch(next);
   },
-  // pushACompany(req,res,next){
-  //   const gameId = req.params.id;
-  // }
+  pushACompany(req,res,next){
+    const gameId = req.params.id;
+  }
 };

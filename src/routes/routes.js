@@ -16,7 +16,8 @@ module.exports = (app) => {
   //userController
   app.get('/api/users/:id',  UserController.readById);
   app.get('/api/users', UserController.read);
-  app.post('/api/users',  UserController.create);
+  app.post('/api/users/register',  UserController.register);
+  app.post('/api/users/authenticate',  UserController.authenticate);
   app.put('/api/users/:id',  UserController.edit);
   app.delete('/api/users/:id',  UserController.delete);
   app.put('/api/users/product/:id',  UserController.addProduct);
