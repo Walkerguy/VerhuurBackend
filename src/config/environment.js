@@ -1,6 +1,6 @@
 // Environment variabelen.
 
-var secret = 'yoursecret';
+var secret = 'ibahesh_ah_sahbe';
 
 var env =
 {
@@ -14,12 +14,13 @@ var env =
 
 var dburl = 'mongodb://localhost/' + env.dbDatabase
 
+   // 'mongodb://localhost/' + env.dbDatabase, //"mongodb://" + env.dbUser + ":" + env.dbPassword + "@" + env.dbHost + ":" + env.dbPort + "/" + env.dbDatabase,
+   //dburl: "mongodb://" + env.dbUser + ":" + env.dbPassword + "@ds029585.mlab.com:29585/mongodb_project"
+
 
 
 module.exports = {
     env: env,
     dburl: dburl,
     secret: secret
-    // 'mongodb://localhost/' + env.dbDatabase, //"mongodb://" + env.dbUser + ":" + env.dbPassword + "@" + env.dbHost + ":" + env.dbPort + "/" + env.dbDatabase,
-    //dburl: "mongodb://" + env.dbUser + ":" + env.dbPassword + "@ds029585.mlab.com:29585/mongodb_project"
 };

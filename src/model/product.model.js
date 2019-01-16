@@ -12,7 +12,7 @@ categorie: {
 description: {
   type: String
 },
-imageUrl: {
+imageurl: {
   type: String
 },
 costPerDay: {

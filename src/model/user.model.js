@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
-// const Loan = require('../model/loan.model');
-// const Product = require('../model/product.model');
+const Loan = require('../model/loan.model');
+const Product = require('../model/product.model');
 
 const UserSchema = mongoose.Schema({
 name: {
@@ -21,18 +21,18 @@ password: {
   type: String,
   required: [true,'the password is missing, please enter a password.']
 },
-isadmin: {
+isAdmin: {
   type: Boolean,
-  required: [true,'the password is missing, please enter a password.']
- }//,
-// loans:[{
-//   type: Schema.Types.ObjectId,
-//   ref: "loan"
-// }],
-// products:[{
-//   type: Schema.Types.ObjectId,
-//   ref: "product"
-// }]
+  required: true
+ },
+loans:[{
+  type: Schema.Types.ObjectId,
+  ref: "loan"
+}],
+products:[{
+  type: Schema.Types.ObjectId,
+  ref: "product"
+}]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -53,7 +53,6 @@ module.exports.createUser = function(newUser, callback){
          if(err) throw err;
           newUser.password = hash;
           newUser.save(callback);
-          console.log(newUser); 
       });
   });
 }
