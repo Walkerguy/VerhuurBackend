@@ -6,11 +6,11 @@ product: {
   type: Schema.Types.ObjectId,
   ref: "product"
 },
-startLendDate:{
+startLoanDate:{
   type: Date,
   required: [true,'the startdate is missing, please enter a startdate.']
 },
-endLendDate:{
+endLoanDate:{
   type: Date
 }
 });
