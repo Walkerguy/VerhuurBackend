@@ -9,7 +9,7 @@ var passport = require('passport');
 module.exports = (app) => {
 
   //UserController
-  app.get('/api/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+  app.get('/api/users/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user});});
   app.post('/api/users/register',  UserController.register);
   app.post('/api/users/authenticate',  UserController.authenticate);
