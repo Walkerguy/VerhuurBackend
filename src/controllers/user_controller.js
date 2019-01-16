@@ -59,7 +59,7 @@ module.exports = {
               id: user._id,
               username: user.username,
               email: user.email,
-              admin: user.admin
+              isAdmin: user.isAdmin
 
             }
           });

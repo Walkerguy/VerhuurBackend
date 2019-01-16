@@ -23,7 +23,7 @@ password: {
 },
 isAdmin: {
   type: Boolean,
-  required: true
+  required: false
  },
 loans:[{
   type: Schema.Types.ObjectId,
