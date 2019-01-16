@@ -13,5 +13,5 @@ module.exports =
 {
     env: env,
     dburl: "mongodb://" + env.dbUser + ":" + env.dbPassword + "@" + env.dbHost + ":" + env.dbPort + "/" + env.dbDatabase,
-    secret: secret
+    secret:  process.env.secret
 };
