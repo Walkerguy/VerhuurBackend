@@ -12,7 +12,7 @@ var env =
 module.exports =
 {
     env: env,
-    //dburl: "mongodb://" + env.dbUser + ":" + env.dbPassword + "@" + env.dbHost + ":" + env.dbPort + "/" + env.dbDatabase,
-    dburl: "mongodb://localhost/test",
+    dburl: "mongodb://" + env.dbUser + ":" + env.dbPassword + "@" + env.dbHost + ":" + env.dbPort + "/" + env.dbDatabase,
+    //dburl: "mongodb://localhost/test",
     secret:  process.env.secret
 };
