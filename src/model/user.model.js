@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
-const Loan = require('../model/loan.model');
+const Rent = require('../model/rent.model');
 const Product = require('../model/product.model');
 
 const UserSchema = mongoose.Schema({
@@ -25,9 +25,9 @@ isAdmin: {
   type: Boolean,
   required: false
  },
-loans:[{
+rents:[{
   type: Schema.Types.ObjectId,
-  ref: "loan"
+  ref: "rent"
 }],
 products:[{
   type: Schema.Types.ObjectId,

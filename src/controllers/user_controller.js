@@ -6,7 +6,7 @@ var config = require('../config/environment');
 module.exports = {
 
 
-  
+
   greeting(req, res) {
     res.send({ hi: 'there' })
   },
@@ -96,13 +96,12 @@ module.exports = {
       .catch(next);
   },
 
-  addLoan(req, res, next) {
+  addRent(req, res, next) {
     const userId = req.params.id;
-    const loan = req.body.id;
+    const rent = req.body.id;
     Company.findByIdAndUpdate({ _id: userId },
-      { $push: { loans: loan } })
+      { $push: { rents: rent } })
       .then((user) => res.status(200).send(user))
       .catch(next);
   }
 };
-

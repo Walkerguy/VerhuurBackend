@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const LoanSchema = new Schema({
+const RentSchema = new Schema({
 product: {
   type: Schema.Types.ObjectId,
   ref: "product"
 },
-startLoanDate:{
+startRentDate:{
   type: Date,
   required: [true,'the startdate is missing, please enter a startdate.']
 },
-endLoanDate:{
+endRentDate:{
   type: Date
 }
 });
 
-const Loan = mongoose.model('loan', LoanSchema);
+const Rent = mongoose.model('rent', RentSchema);
 
-module.exports = Loan;
+module.exports = Rent;

@@ -2,7 +2,7 @@ const mongoose = require ('mongoose');
 mongoose.Promise = global.Promise;
 
 before((done) => {
-  mongoose.connect('mongodb://localhost/game_test',{ useNewUrlParser: true });
+  mongoose.connect('mongodb://localhost/test',{ useNewUrlParser: true });
   mongoose.connection
     .once('open',() => { done(); })
     .on('error', (error)=>{
@@ -11,10 +11,10 @@ before((done) => {
 });
 
 beforeEach((done) =>{
-  const{companies,developers,games} = mongoose.connection.collections;
-  games.drop(()=>{
-    companies.drop(()=>{
-      developers.drop(()=>{
+  const{rents,users,products} = mongoose.connection.collections;
+  rents.drop(()=>{
+    users.drop(()=>{
+      products.drop(()=>{
         done();
       });
     });
