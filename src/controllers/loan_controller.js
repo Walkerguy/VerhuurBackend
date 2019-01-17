@@ -8,7 +8,7 @@ module.exports = {
     .then(loan => res.send(loan))
     .catch(next);
   },
-  
+
 //gebruik deze edit ook voor het toevoegen van een enddate later gezien dit geen push is
   edit(req,res,next){
     const loanId = req.params.id;
@@ -37,5 +37,13 @@ module.exports = {
     Loan.findById({_id: loanId})
     .then((loan) => res.status(200).send(loan))
     .catch(next);
-  }
+  },
+  addProduct(req,res,next){
+  const loanId = req.params.id;
+  const product = req.body.id;
+  Loan.findByIdAndUpdate({ _id: loanId },
+    { $push: { products: product } })
+  .then((loan) => res.status(200).send(loan))
+  .catch(next);
+}
 }

@@ -27,6 +27,7 @@ module.exports = (app) => {
 
   //LoanController
   app.get('/api/loans/:id',  LoanController.readById);
+  app.put('/api/loans/product/:id',LoanController.addProduct) )
   app.get('/api/loans', LoanController.read);
   app.post('/api/loans',  LoanController.create);
   app.put('/api/loans/:id',  LoanController.edit);
