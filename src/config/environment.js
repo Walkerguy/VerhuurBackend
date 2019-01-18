@@ -15,3 +15,4 @@ module.exports =
     dburl: "mongodb://" + env.dbUser + ":" + env.dbPassword + "@" + env.dbHost + ":" + env.dbPort + "/" + env.dbDatabase,
     secret:  process.env.secret
 };
+
