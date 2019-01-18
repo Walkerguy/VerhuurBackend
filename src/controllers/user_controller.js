@@ -99,9 +99,25 @@ module.exports = {
   addRent(req, res, next) {
     const userId = req.params.id;
     const rent = req.body.id;
-    Company.findByIdAndUpdate({ _id: userId },
+    User.findByIdAndUpdate({ _id: userId },
       { $push: { rents: rent } })
       .then((user) => res.status(200).send(user))
       .catch(next);
-  }
+  },
+  read(req,res,next){
+    User.find({})
+    .populate('products')
+    .populate('rents')
+    .then((user) => res.status(200).send(user))
+    .catch(next);
+  },
+
+  readById(req,res,next){
+    const userId = req.params.id;
+    User.findById({_id: userId})
+    .populate('products')
+    .populate('rents')
+    .then((user) => res.status(200).send(user))
+    .catch(next);
+  },
 };

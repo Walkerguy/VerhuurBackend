@@ -56,3 +56,18 @@ describe('Rents controller', () => {
     });
   });
 });
+
+it('DELETE to /api/products/id can delete a prod', done =>{
+  const rent = new Rent({ startRentDate: "2016-05-18T16:00:00Z" });
+  rent.save().then(() =>{
+    request(app)
+    .delete('/api/rents/' + rent._id)
+    .end(()=>{
+      Rent.findOne({startRentDate: "2016-05-18T16:00:00Z"})
+      .then((rent) =>{
+        assert(rent === null);
+        done();
+      });
+    });
+  });
+});

@@ -36,6 +36,7 @@ module.exports = {
   readById(req,res,next){
     const rentId = req.params.id;
     Rent.findById({_id: rentId})
+    .populate('products')
     .then((rent) => res.status(200).send(rent))
     .catch(next);
   },
