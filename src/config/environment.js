@@ -16,3 +16,4 @@ module.exports =
     //dburl: "mongodb://localhost/" + env.dbDatabase,
     secret:  process.env.secret
 };
+
