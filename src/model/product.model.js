@@ -6,7 +6,7 @@ name: {
   type: String,
   required: [true,'the name is missing, please enter a name.']
 },
-categorie: {
+category: {
   type: String
 },
 description: {
@@ -16,7 +16,7 @@ imageurl: {
   type: String
 },
 costPerDay: {
-  type: String
+  type: Number
 },
 lend: {
   type: Boolean
