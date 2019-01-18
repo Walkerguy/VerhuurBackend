@@ -4,6 +4,8 @@ const app = require('../../src/app.js');
 const mongoose = require('mongoose');
 const Product = mongoose.model('product');
 
+
+
 describe('Products controller', () => {
   it('post to api/products creates a new product', done => {
     Product.count().then(count =>{
@@ -35,7 +37,7 @@ describe('Products controller', () => {
     });
   });
 
-  it('DELETE to /api/products/id can delete a driver', done =>{
+  it('DELETE to /api/products/id can delete a prod', done =>{
     const product = new Product({ name: 'Mario' });
     product.save().then(() =>{
       request(app)
