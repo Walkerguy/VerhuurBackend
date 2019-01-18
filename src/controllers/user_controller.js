@@ -6,7 +6,7 @@ var config = require('../config/environment');
 module.exports = {
 
 
-  
+
   greeting(req, res) {
     res.send({ hi: 'there' })
   },
@@ -96,13 +96,28 @@ module.exports = {
       .catch(next);
   },
 
-  addLoan(req, res, next) {
+  addRent(req, res, next) {
     const userId = req.params.id;
-    const loan = req.body.id;
-    Company.findByIdAndUpdate({ _id: userId },
-      { $push: { loans: loan } })
+    const rent = req.body.id;
+    User.findByIdAndUpdate({ _id: userId },
+      { $push: { rents: rent } })
       .then((user) => res.status(200).send(user))
       .catch(next);
-  }
-};
+  },
+  read(req,res,next){
+    User.find({})
+    .populate('products')
+    .populate('rents')
+    .then((user) => res.status(200).send(user))
+    .catch(next);
+  },
 
+  readById(req,res,next){
+    const userId = req.params.id;
+    User.findById({_id: userId})
+    .populate('products')
+    .populate('rents')
+    .then((user) => res.status(200).send(user))
+    .catch(next);
+  },
+};

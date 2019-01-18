@@ -1,5 +1,5 @@
 const UserController = require ('../controllers/user_controller')
-const LoanController = require ('../controllers/loan_controller')
+const RentController = require ('../controllers/rent_controller')
 const ProductController = require ('../controllers/product_controller')
 
 var passport = require('passport');
@@ -16,7 +16,9 @@ module.exports = (app) => {
   // app.put('/api/users/:id',  UserController.edit);
   // app.delete('/api/users/:id',  UserController.delete);
   app.put('/api/users/product/:id',  UserController.addProduct);
-  app.put('/api/users/loan/:id',  UserController.addLoan);
+  app.put('/api/users/rent/:id',  UserController.addRent);
+  app.get('/api/users/:id',  UserController.readById);
+  app.get('/api/users',  UserController.read);
 
   //Productcontroller
   app.get('/api/products/:id',  ProductController.readById);
@@ -25,11 +27,12 @@ module.exports = (app) => {
   app.put('/api/products/:id',  ProductController.edit);
   app.delete('/api/products/:id',  ProductController.delete);
 
-  //LoanController
-  app.get('/api/loans/:id',  LoanController.readById);
-  app.get('/api/loans', LoanController.read);
-  app.post('/api/loans',  LoanController.create);
-  app.put('/api/loans/:id',  LoanController.edit);
-  app.delete('/api/loans/:id',  LoanController.delete);
+  //RentController
+  app.get('/api/rents/:id',  RentController.readById);
+  app.put('/api/rents/product/:id',RentController.addProduct);
+  app.get('/api/rents', RentController.read);
+  app.post('/api/rents',  RentController.create);
+  app.put('/api/rents/:id',  RentController.edit);
+  app.delete('/api/rents/:id',  RentController.delete);
 
 };
