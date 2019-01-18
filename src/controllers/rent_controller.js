@@ -28,7 +28,7 @@ module.exports = {
 
   read(req,res,next){
     Rent.find({})
-    .populate('product')
+    .populate('products')
     .then((rent) => res.status(200).send(rent))
     .catch(next);
   },
