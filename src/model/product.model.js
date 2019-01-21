@@ -16,7 +16,7 @@ imageurl: {
   type: String
 },
 costPerDay: {
-  type: String
+  type: Number
 },
 lend: {
   type: Boolean

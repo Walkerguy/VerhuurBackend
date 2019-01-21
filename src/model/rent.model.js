@@ -2,16 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RentSchema = new Schema({
-products: [{
+product: {
   type: Schema.Types.ObjectId,
   ref: "product"
-}],
-startRentDate:{
-  type: Date,
-  required: [true,'the startdate is missing, please enter a startdate.']
 },
-endRentDate:{
-  type: Date
+daysRented:{
+  type: Number
+},
+totalPrice:{
+  type: Number
 }
 });
 
