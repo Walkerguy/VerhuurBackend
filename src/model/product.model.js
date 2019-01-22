@@ -6,7 +6,7 @@ name: {
   type: String,
   required: [true,'the name is missing, please enter a name.']
 },
-categorie: {
+category: {
   type: String
 },
 description: {

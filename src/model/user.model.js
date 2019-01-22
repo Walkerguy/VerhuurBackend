@@ -38,8 +38,15 @@ products:[{
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function(id, callback){
-  User.findById(id, callback);
-}
+  User.findById(id, callback)
+  .populate({
+    path: 'rents',
+    populate: {path: 'products',
+               model: 'product'}
+              })
+  .populate('products')
+
+};
 
 module.exports.getUserByUsername = function(username, callback){
   const query = {username: username}

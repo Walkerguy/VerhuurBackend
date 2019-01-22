@@ -1,4 +1,5 @@
 const Rent = require('../model/rent.model')
+const Product = require('../model/product.model')
 
 module.exports = {
 
@@ -43,9 +44,11 @@ module.exports = {
   addProduct(req,res,next){
   const rentId = req.params.id;
   const product = req.body.id;
+
   Rent.findByIdAndUpdate({ _id: rentId },
     { $push: { products: product } })
-  .then((rent) => res.status(200).send(rent))
+  .then(() => Product.findByIdAndUpdate({_id:product},{"lend":true}))
+  .then(product => res.send(product))
   .catch(next);
 }
 }

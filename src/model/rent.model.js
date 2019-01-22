@@ -2,15 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RentSchema = new Schema({
-product: {
+products: {
   type: Schema.Types.ObjectId,
   ref: "product"
 },
 daysRented:{
-  type: Number
+  type: Number,
+  required: [true]
 },
 totalPrice:{
-  type: Number
+  type: Number,
+  required: [true]
 }
 });
 
