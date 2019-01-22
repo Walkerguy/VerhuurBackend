@@ -86,10 +86,10 @@ module.exports = {
   //     .catch(next);
   // },
 
-  //push hem onder de naam id, als je dat niet doet ben je niet zo slim
+  
   addProduct(req, res, next) {
     const userId = req.params.id;
-    const product = req.body.id;
+    const product = req.body._id; 
     User.findByIdAndUpdate({ _id: userId },
       { $push: { products: product } })
       .then((user) => res.status(200).send(user))
@@ -98,26 +98,26 @@ module.exports = {
 
   addRent(req, res, next) {
     const userId = req.params.id;
-    const rent = req.body.id;
+    const rent = req.body._id;
     User.findByIdAndUpdate({ _id: userId },
       { $push: { rents: rent } })
       .then((user) => res.status(200).send(user))
       .catch(next);
   },
-  read(req,res,next){
-    User.find({})
-    .populate('products')
-    .populate('rents')
-    .then((user) => res.status(200).send(user))
-    .catch(next);
-  },
+  // read(req,res,next){
+  //   User.find({})
+  //   .populate('products')
+  //   .populate('rents')
+  //   .then((user) => res.status(200).send(user))
+  //   .catch(next);
+  // },
 
-  readById(req,res,next){
-    const userId = req.params.id;
-    User.findById({_id: userId})
-    .populate('products')
-    .populate('rents')
-    .then((user) => res.status(200).send(user))
-    .catch(next);
-  },
+  // readById(req,res,next){
+  //   const userId = req.params.id;
+  //   User.findById({_id: userId})
+  //   .populate('products')
+  //   .populate('rents')
+  //   .then((user) => res.status(200).send(user))
+  //   .catch(next);
+  // },
 };

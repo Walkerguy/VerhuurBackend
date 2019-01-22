@@ -5,7 +5,7 @@ module.exports = {
   create(req,res,next){
     const productProps = req.body;
     Product.create(productProps)
-    .then(product => res.json({success: true, msg:'Data registered'}))
+    .then(product => res.send(product))
     .catch(next);
   },
   //gebruik deze edit ook om een product naar lend te zetten of om een prijs aan te passen

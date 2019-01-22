@@ -6,12 +6,13 @@ products: [{
   type: Schema.Types.ObjectId,
   ref: "product"
 }],
-startRentDate:{
-  type: Date,
-  required: [true,'the startdate is missing, please enter a startdate.']
+daysRented:{
+  type: Number,
+  required: [true]
 },
-endRentDate:{
-  type: Date
+totalPrice:{
+  type: Number,
+  required: [true]
 }
 });
 
