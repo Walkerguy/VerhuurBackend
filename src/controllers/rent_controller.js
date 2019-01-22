@@ -6,7 +6,7 @@ module.exports = {
   create(req,res,next){
     const rentProps = req.body;
     Rent.create(rentProps)
-    .then(() => Product.findByIdAndUpdate({_id:product},{"lend":true}))
+    .then(() => Product.findByIdAndUpdate({_id:rentProps.products},{"lend":true}))
     .then(rent => res.send(rent))
     .catch(next);
   },
