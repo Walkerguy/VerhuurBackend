@@ -1,5 +1,7 @@
 const Rent = require('../model/rent.model')
+
 const Product = require('../model/product.model');
+
 
 module.exports = {
 
@@ -10,6 +12,7 @@ module.exports = {
     .then(() => Product.findByIdAndUpdate({_id:rentProps.products},{"lend":true}))
     .catch(next);
   },
+  
 
 
 //gebruik deze edit ook voor het toevoegen van een enddate later gezien dit geen push is
@@ -53,5 +56,6 @@ module.exports = {
     .then(() => Product.findByIdAndUpdate({_id:product},{"lend":true}))
     .then(product => res.send(product))
     .catch(next);
-}
+
+ }
 }
